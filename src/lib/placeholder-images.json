@@ -1,3 +1,34 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-1",
+      "description": "A modern dashboard interface showing various charts and graphs, representing financial data and analytics.",
+      "imageUrl": "https://images.unsplash.com/photo-1748609278627-4b0e483b9b70?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxkYXNoYm9hcmQlMjBhbmFseXRpY3N8ZW58MHx8fHwxNzYyNDExMjQ1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "dashboard analytics"
+    },
+    {
+      "id": "avatar-1",
+      "description": "Profile picture of a user.",
+      "imageUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwZXJzb24lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjIzNzk2MTR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "person portrait"
+    },
+    {
+      "id": "combo-1",
+      "description": "Image of a burger and fries combo.",
+      "imageUrl": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxidXJnZXIlMjBmcmllc3xlbnwwfHx8fDE3NjIzNDY4ODl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "burger fries"
+    },
+    {
+      "id": "combo-2",
+      "description": "Image of a pizza and soda combo.",
+      "imageUrl": "https://images.unsplash.com/photo-1652862730514-8c7502b83a11?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxwaXp6YSUyMHNvZGF8ZW58MHx8fHwxNzYyMzQyNzEzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "pizza soda"
+    },
+    {
+      "id": "combo-3",
+      "description": "Image of a coffee and pastry combo.",
+      "imageUrl": "https://images.unsplash.com/photo-1705588548683-14c563cb102a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjb2ZmZWUlMjBwYXN0cnl8ZW58MHx8fHwxNzYyMzA3NzEzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "coffee pastry"
+    }
+  ]
 }
