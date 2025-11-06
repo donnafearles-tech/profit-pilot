@@ -1,0 +1,43 @@
+type User @table {
+  email: String!
+  passwordHash: String!
+  createdAt: Timestamp!
+  displayName: String
+  lastLoginAt: Timestamp
+}
+
+type ClientProject @table {
+  name: String!
+  createdAt: Timestamp!
+  description: String
+  industry: String
+  user: User
+}
+
+type ProductIdea @table {
+  title: String!
+  createdAt: Timestamp!
+  shortDescription: String
+  keyFeatures: [String]
+  targetAudience: String
+  benefits: String
+  clientProject: ClientProject
+}
+
+type Feedback @table {
+  type: String!
+  createdAt: Timestamp!
+  comment: String
+  user: User
+  productIdea: ProductIdea
+}
+
+type Tag @table {
+  name: String!
+}
+
+type ProductIdeaTag @table(key: ["productIdea", "tag"]) {
+  createdAt: Timestamp!
+  productIdea: ProductIdea!
+  tag: Tag!
+}

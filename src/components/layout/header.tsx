@@ -21,6 +21,10 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { usePathname } from "next/navigation";
 import { navLinks } from "@/lib/data";
+import { useAuth } from "../auth-provider";
+import { getAuth, signOut } from "firebase/auth";
+import Link from "next/link";
+
 
 export function Header() {
   const userAvatar = PlaceHolderImages.find((p) => p.id === "avatar-1");
@@ -43,6 +47,13 @@ export function Header() {
 }
 
 function UserMenu({ userAvatar }: { userAvatar: any }) {
+  const { user } = useAuth();
+  
+  const handleLogout = async () => {
+    const auth = getAuth();
+    await signOut(auth);
+  };
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -51,17 +62,17 @@ function UserMenu({ userAvatar }: { userAvatar: any }) {
           className="relative h-9 w-9 rounded-full"
         >
           <Avatar className="h-9 w-9">
-            {userAvatar && <AvatarImage src={userAvatar.imageUrl} alt="User" />}
-            <AvatarFallback>PP</AvatarFallback>
+            {user?.photoURL && <AvatarImage src={user.photoURL} alt="User" />}
+            <AvatarFallback>{user?.email?.[0].toUpperCase() ?? 'U'}</AvatarFallback>
           </Avatar>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56" align="end" forceMount>
         <DropdownMenuLabel className="font-normal">
           <div className="flex flex-col space-y-1">
-            <p className="text-sm font-medium leading-none">ProfitPilot User</p>
+            <p className="text-sm font-medium leading-none">{user?.displayName ?? 'User'}</p>
             <p className="text-xs leading-none text-muted-foreground">
-              user@profitpilot.com
+              {user?.email ?? ''}
             </p>
           </div>
         </DropdownMenuLabel>
@@ -79,9 +90,11 @@ function UserMenu({ userAvatar }: { userAvatar: any }) {
           <span>Support</span>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
-          <LogOut className="mr-2 h-4 w-4" />
-          <span>Log out</span>
+        <DropdownMenuItem onClick={handleLogout} asChild>
+          <Link href="/">
+            <LogOut className="mr-2 h-4 w-4" />
+            <span>Log out</span>
+          </Link>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

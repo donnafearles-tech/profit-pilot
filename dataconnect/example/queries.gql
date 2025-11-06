@@ -1,0 +1,28 @@
+mutation CreateTag($name: String!) @auth(level: USER) {
+  tag_insert(data: {name: $name})
+}
+
+query ListProductIdeas @auth(level: USER) {
+  productIdeas {
+    id
+    title
+    shortDescription
+  }
+}
+
+mutation CreateFeedback($productIdeaId: UUID!, $comment: String!, $type: String!) @auth(level: USER) {
+  feedback_insert(data: {productIdeaId: $productIdeaId, userId_expr: "auth.uid", comment: $comment, type: $type})
+}
+
+query GetClientProject($id: UUID!) @auth(level: USER) {
+  clientProject(id: $id) {
+    id
+    name
+    description
+    industry
+    productIdeas_on_clientProject {
+      id
+      title
+    }
+  }
+}

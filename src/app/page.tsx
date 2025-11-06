@@ -1,11 +1,21 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Pilcrow } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Logo } from "@/components/icons/logo";
+import { redirect } from "next/navigation";
+import { getAuth } from "firebase/auth";
+import { app } from "@/firebase/config";
 
 export default function Home() {
+  try {
+    const auth = getAuth(app);
+    if (auth.currentUser) {
+      redirect("/dashboard");
+    }
+  } catch (e) {}
+
   const heroImage = PlaceHolderImages.find(p => p.id === "hero-1");
 
   return (
@@ -17,7 +27,7 @@ export default function Home() {
         </Link>
         <nav className="flex items-center gap-4">
           <Button variant="ghost" asChild>
-            <Link href="/dashboard">Login</Link>
+            <Link href="/login">Login</Link>
           </Button>
           <Button asChild className="bg-accent hover:bg-accent/90 text-accent-foreground">
             <Link href="/dashboard">Get Started <ArrowRight className="ml-2" /></Link>
